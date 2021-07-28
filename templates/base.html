@@ -1,0 +1,204 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        {% comment 'Local Font CSS' %}
+            <!--LOCAL FONTS-->
+            <link href="{% static 'css/font-rules-roboto.css' %}" rel="stylesheet" type="text/css" /> 
+            <link href="{% static 'css/font-rules-open-sans.css' %}" rel="stylesheet" type="text/css" /> 
+            <link href="{% static 'css/font-rules-notosans.css' %}" rel="stylesheet" type="text/css" /> 
+            <!--END LOCAL FONTS-->
+
+            <!--Local Bootstrap CSS-->
+            <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        {% endcomment %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/all.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">  
+        
+        
+        
+        <title>{% block title %}Numerithms | Full Stack Web Developer{% endblock title %}</title>
+
+        <link href="{% static 'images/logo.png' %}" rel="icon" type="image/png" />
+        {% block links %}            
+        {% endblock links %}
+
+        <style>
+        {% block internal_css %}            
+        {% endblock internal_css %}   
+        </style>
+    </head>
+
+    <body>
+        <main class="wrapper">
+
+            <!-- Sidebar -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Bootstrap Sidebar</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="#numerical_methods_submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Numerical Methods</a>
+                        <ul class="collapse list-unstyled" id="numerical_methods_submenu">
+                            <li>
+                                <a href="#">Curve Fitting</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#algorithms_analysis_submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Algorithms Analysis</a>
+                        <ul class="collapse list-unstyled" id="algorithms_analysis_submenu">
+                            <li>
+                                <a href="{% url 'fractional_knapsack' %}" id="fractional_knapsack">Fractional Knapsack</a>
+                            </li>
+                            <li>
+                                <a href="#">Optimal Merge Pattern</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'job_sequencing' %}" id="job_sequencing">Job Sequencing with deadline</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#operations_research_submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Operations Research</a>
+                        <ul class="collapse list-unstyled" id="operations_research_submenu">
+                            <li>
+                                <a href="#">Simplex Method (LPP)</a>
+                            </li>
+                            <li>
+                                <a href="#">Transport Problem</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>    
+
+             <footer class="">
+                <nav class="navbar navbar-dark bg-dark"> 
+                    <small class="m-auto text-muted"> &copy <span id="copyright-year">2010</span> David Babalola </small>
+                    {% block footer_extracontent %}
+                    {% endblock footer_extracontent %}
+                </nav>        
+            </footer>         
+            </nav>
+
+            <!-- Page Content -->
+            <section id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn text-white" style="background-color: #6d7fcc;">
+                            <i class="fas fa-align-left"></i>
+                            <span>Toggle Sidebar</span>
+                        </button>
+                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <div class="container">
+                    {% block content %}
+
+                    {% endblock content %}
+                </div>    	                                              
+            </section>
+        </main>
+                  
+        
+        
+        {% comment 'Local Bootstrap JS' %}
+            <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+            <script src="{% static 'js/popper.min.js' %}"></script>
+            <script src="{% static 'js/bootstrap.min.js' %}"></script>  
+        {% endcomment %}
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+            <script src="{% static 'js/popper.min.js' %}"></script>
+            <script src="{% static 'js/bootstrap.min.js' %}"></script>  
+                
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script>    
+            let copyrightSpan = document.getElementById("copyright-year");            
+            const year = new Date().getFullYear();
+            copyrightSpan.textContent = year;
+
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    // open or close navbar
+                    $('#sidebar').toggleClass('active');
+                    // close dropdowns
+                    $('.collapse.in').toggleClass('in');
+                    // and also adjust aria-expanded attributes we use for the open/closed arrows
+                    // in our CSS
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');                    
+                });
+
+            });    
+        </script>
+        <script src="{% static 'js/base.js' %}"></script>
+        {% block scripts %}           
+        {% endblock scripts %}
+    </body>
+
+</html>
+

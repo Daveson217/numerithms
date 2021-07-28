@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row"> 
+    <h3 class="mx-auto" style="color: #7386D5">
+        Job Sequencing with Deadline
+    </h3>  
+
+    <div>
+        <P class="w-75 mx-auto">
+            In Job sequencing, the objective is to find a sequence of jobs that will be completed wwithin deadline and give maximum profit            
+        </p>
+
+        <div class="container" id="form-content">
+            <form method="get" action="" class="w-50 mx-auto job_sequencing_form">
+                <div class="form-group form-row">
+                    <label for="jobs" class="col-md-6">Enter Jobs, separated by commas</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm" name="jobs" id="jobs" placeholder="J1,J2,J3...">
+                    </div>
+                </div>
+                <div class="form-group form-row mb-0 pb-0">
+                    <label for="deadlines" class="col-md-6">Enter Deadlines, separated by commas</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm" name="deadlines" id="deadlines" placeholder="1,3,4...">
+                    </div>
+                </div>
+
+                <div class="form-group form-row mb-0 pb-0">
+                    <label for="profits" class="col-md-6">Enter Profits, separated by commas</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm" name="profits" id="profits" placeholder="100,60,200...">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary text-center solve-problem">Go</button>                
+                <div class="alert alert-primary mt-2 d-none" id="answer-response" role="alert"></div>
+            </form>
+        </div>
+
+            
+            
+
+    </div>
+
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+{% comment %} <script href="{% static 'js/base.js' %}"></script> {% endcomment %}
+<script>
+$(".solve-problem").click((e)=> {
+    e.preventDefault();
+    var form = $(".job_sequencing_form");
+    //console.log(form.serialize());
+    $.ajax({
+        url: 'handler/',
+        data: form.serialize(),
+        dataType: 'json',
+        success: function (data) {
+            let resultElement = document.getElementById("answer-response");
+            let msg =  data.job_sequence_msg + "<br /> The maximum profit is " +data.max_profit
+            resultElement.innerHTML = msg;
+
+            if(resultElement.classList.contains("d-none")) {
+                resultElement.classList.toggle("d-none");
+            }
+        }
+    });
+
+    });
+</script>
+{% comment %} <script src="{% static 'js/fractional_knapsack.js' %}"></script> {% endcomment %}
+{% endblock scripts %}

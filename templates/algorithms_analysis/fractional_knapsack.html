@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row"> 
+    <h3 class="mx-auto" style="color: #7386D5">
+        Fractional Knapsack
+    </h3>  
+
+    <div>
+        <P class="w-75 mx-auto">
+            Given a set of items, each with a weight and a value, determine a subset of items to include in a collection 
+            so that the total weight is less than of equal to a given limit and the total value is as large as possible                       
+        </p>
+
+        <div class="container" id="form-content">
+            <form method="get" action="" class="w-50 mx-auto fractional_knapsack_form">
+                <div class="form-group form-row">
+                    <label for="profits" class="col-md-6">Enter Profits, separated by commas</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm" name="profits" id="profits" placeholder="20,40,60...">
+                    </div>
+                </div>
+                <div class="form-group form-row mb-0 pb-0">
+                    <label for="weights" class="col-md-6">Enter Weights, separated by commas</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm" name="weights" id="weights" placeholder="10,30,50...">
+                    </div>
+                </div>
+
+                <div class="form-group form-row mb-0 pb-0">
+                    <label for="weights" class="col-md-6">Enter max Weight</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="max_weight" id="max-weight" placeholder="Max weight">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary text-center solve-problem">Go</button>                
+                <div class="alert alert-primary mt-2 d-none" id="answer-response" role="alert"></div>
+            </form>
+        </div>
+
+            
+            
+
+    </div>
+
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+{% comment %} <script href="{% static 'js/base.js' %}"></script> {% endcomment %}
+<script>
+$(".solve-problem").click((e)=> {
+    e.preventDefault();
+    var form = $(".fractional_knapsack_form");
+    console.log(form.serialize());
+    $.ajax({
+        url: 'handler/',
+        data: form.serialize(),
+        dataType: 'json',
+        success: function (data) {
+            let resultElement = document.getElementById("answer-response");
+            let msg =  data.message + "<br /> The items to be chosen are " +data.items
+            resultElement.innerHTML = msg;
+
+            if(resultElement.classList.contains("d-none")) {
+                resultElement.classList.toggle("d-none");
+            }
+        }
+    });
+
+    });
+</script>
+{% comment %} <script src="{% static 'js/fractional_knapsack.js' %}"></script> {% endcomment %}
+{% endblock scripts %}
